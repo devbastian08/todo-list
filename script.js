@@ -9,7 +9,7 @@ const createTask =  (evento) => {
   task.classList.add("card");
   input.value = "";// se le da el valor al input de string vacio 
   const content =`<div>
-          ${checkComplete}
+          ${checkComplete()}
             <span class="task">${value}</span>
             </div>
             <i class="fas fa-trash-alt trashIcon icon"></i>`
@@ -26,7 +26,10 @@ btn.addEventListener("click", createTask);
 
 const checkComplete = () =>{
   const i = document.createElement("i");
-  i.classList.add("far fa-check-square icon");
+  i.classList.add("far");
+  i.classList.add("fa-check-square");
+  i.classList.add("icon");
+  
   return i
 }
 
