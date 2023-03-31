@@ -1,5 +1,6 @@
-(() => {
-  const btn = document.querySelector("[data-form-btn]");
+import checkComplete from "./componentes/checkComplete.js" 
+import deleteIcon from "./componentes/deleteIcon.js"
+ const btn = document.querySelector("[data-form-btn]");
 
   const createTask = (evento) => {
     evento.preventDefault(); // evitar que recargue la pagina
@@ -17,37 +18,9 @@
     taskcontent.appendChild(titleTask); //añadiendo el html la div
     //task.innerHTML = content;
     task.appendChild(taskcontent); //añadiendo el taskcontent la <li></li>
-    task.appendChild(deleteicon());
+    task.appendChild(deleteIcon());
     list.appendChild(task);
   };
 
   // eventos que se desarrollan con el boton
   btn.addEventListener("click", createTask);
-
-  //creando la etiquta <i></i> y sus clases
-  const checkComplete = () => {
-    const i = document.createElement("i");
-    i.classList.add("far", "fa-check-square", "icon");
-    i.addEventListener("click", completeTask);
-    return i;
-  };
-
-  const completeTask = (event) => {
-    const element = event.target;
-    element.classList.toggle("fas");
-    element.classList.toggle("completeIcon");
-    element.classList.toggle("far");
-  };
-
-  const deleteicon = () => {
-    const i = document.createElement("i");
-    i.classList.add("fas", "fa-trash-alt", "trashIcon", "icon");
-    i.addEventListener("click", deleteTasks);
-    return i;
-  };
-
-  const deleteTasks = (event) => {
-    const parent = event.target.parentElement;
-    parent.remove();
-  };
-})();
