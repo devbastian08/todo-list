@@ -15,10 +15,9 @@
     titleTask.classList.add("task"); //creando la clase task
     titleTask.innerHTML = value; // añadiendo el valor del input a la lista contenido html
     taskcontent.appendChild(titleTask); //añadiendo el html la div
-    const content = `
-            <i class="fas fa-trash-alt trashIcon icon"></i>`;
     //task.innerHTML = content;
     task.appendChild(taskcontent); //añadiendo el taskcontent la <li></li>
+    task.appendChild(deleteicon());
     list.appendChild(task);
   };
 
@@ -38,5 +37,17 @@
     element.classList.toggle("fas");
     element.classList.toggle("completeIcon");
     element.classList.toggle("far");
+  };
+
+  const deleteicon = () => {
+    const i = document.createElement("i");
+    i.classList.add("fas", "fa-trash-alt", "trashIcon", "icon");
+    i.addEventListener("click", deleteTasks);
+    return i;
+  };
+
+  const deleteTasks = (event) => {
+    const parent = event.target.parentElement;
+    parent.remove();
   };
 })();
